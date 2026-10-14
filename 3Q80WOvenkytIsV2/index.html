@@ -1,92 +1,69 @@
 <!doctype html>
 <html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow"><meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="MyTrade"><meta name="theme-color" content="#F2F2F7">
-<title>MyTrade</title>
+<meta name="apple-mobile-web-app-title" content="MyTrade"><meta name="theme-color" content="#F2F2F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B0B0F" media="(prefers-color-scheme: dark)"><title>MyTrade</title>
 <style>
-:root{--bg:#F2F2F7;--karte:#fff;--fuell:#F2F2F6;--text:#1C1C1E;--leise:#86868C;--linie:#E5E5EA;--akzent:#1B2B4B;--akzent-soft:#E6EAF2;
---gruen:#1E8E4E;--gruen-soft:#E3F3EA;--rot:#C9362F;--rot-soft:#FBE7E5;--gelb:#A86A00;--gelb-soft:#FAF0DC;--orange:#C77700;color-scheme:light}
-@media (prefers-color-scheme:dark){:root{--bg:#0B0B0F;--karte:#1C1C1F;--fuell:#26262A;--text:#F2F2F5;--leise:#9A9AA2;--linie:#2E2E33;--akzent:#9FB4DE;
---akzent-soft:#25304A;--gruen:#4CC67F;--gruen-soft:#18301F;--rot:#F06B63;--rot-soft:#3A1D1B;--gelb:#E5B04A;--gelb-soft:#3A2E14;--orange:#E5A04A;color-scheme:dark}}
+:root{--bg:#F2F2F7;--karte:#fff;--fuell:#F2F2F6;--text:#1C1C1E;--leise:#8A8A90;--linie:#E5E5EA;--akzent:#1B2B4B;--akzent-soft:#E6EAF2;
+--gruen:#1E8E4E;--rot:#C9362F;--orange:#C77700;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#0B0B0F;--karte:#1C1C1F;--fuell:#26262A;--text:#F2F2F5;--leise:#9A9AA2;--linie:#2E2E33;
+--akzent:#9FB4DE;--akzent-soft:#22304D;--gruen:#4CC67F;--rot:#F06B63;--orange:#E5A04A;color-scheme:dark}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font:15px/1.45 -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
-.wrap{max-width:1100px;margin:0 auto;padding:calc(24px + env(safe-area-inset-top,0px)) 16px calc(40px + env(safe-area-inset-bottom,0px))}
-h1{font:800 clamp(32px,7vw,44px)/1.05 -apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;letter-spacing:-.025em;margin:0}
-.sub{color:var(--leise);font-size:16px;margin-top:6px}
-h2{font:700 21px/1.2 -apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;letter-spacing:-.01em;margin:0 0 12px}
-.karte{background:var(--karte);border-radius:22px;padding:22px;margin-top:18px}
-.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;padding:0;overflow:hidden}
-.kpi{padding:18px 20px;border-left:1px solid var(--linie)} .kpi:first-child{border-left:0}
-.kpi .k{color:var(--leise);font-size:13px} .kpi .v{font:750 26px/1.2 -apple-system,sans-serif;letter-spacing:-.02em;margin-top:2px;font-variant-numeric:tabular-nums;white-space:nowrap}
-.kpi .s{font-size:13px;color:var(--leise);font-variant-numeric:tabular-nums}
-@media (max-width:700px){.kpis{grid-template-columns:1fr 1fr}.kpi:nth-child(3){border-left:0}.kpi:nth-child(n+3){border-top:1px solid var(--linie)}.kpi .v{font-size:22px}}
-.raster2{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:18px;align-items:start}
-.raster2>div>.karte:first-child{margin-top:18px}
-@media (max-width:860px){.raster2{grid-template-columns:1fr}}
-.pos,.gruen-t{color:var(--gruen)} .neg{color:var(--rot)} .leise{color:var(--leise)}
-.pill{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:var(--fuell);color:var(--leise);vertical-align:middle}
-.pill.gruen{background:var(--gruen-soft);color:var(--gruen)} .pill.rot{background:var(--rot-soft);color:var(--rot)} .pill.gelb{background:var(--gelb-soft);color:var(--gelb)}
-.leer{color:var(--leise)}
-.pos-karte{border-top:1px solid var(--linie);padding:16px 0} .pos-karte:first-of-type{border-top:0;padding-top:4px}
-.pos-karte .kopf{display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap}
-.sym{font-size:18px} .gross{font-weight:700;font-size:17px;font-variant-numeric:tabular-nums} .gross small{font-weight:500;font-size:13px}
-.fakten{display:flex;flex-wrap:wrap;gap:6px 16px;color:var(--leise);font-size:13.5px;margin:6px 0 8px} .fakten b{color:var(--text);font-variant-numeric:tabular-nums}
-svg{width:100%;height:auto;display:block}
-.chart .raster{stroke:var(--linie);stroke-width:1} .chart .achse{fill:var(--leise);font-size:11px}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.4 -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:640px;margin:0 auto;padding:calc(20px + env(safe-area-inset-top,0px)) 16px calc(32px + env(safe-area-inset-bottom,0px))}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px}
+h1{font:800 34px/1 -apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;letter-spacing:-.025em;margin:0}
+.stand{color:var(--leise);font-size:14px;margin-top:6px}
+.info{width:40px;height:40px;border-radius:50%;border:0;background:var(--karte);color:var(--text);font:600 18px/1 -apple-system,sans-serif;cursor:pointer}
+.karte{background:var(--karte);border-radius:22px;padding:20px;margin-top:16px}
+h2{font:700 19px/1.2 -apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;margin:0 0 6px;display:flex;justify-content:space-between;align-items:baseline;gap:4px 10px;flex-wrap:wrap}
+h2 .leise{font-size:14px;font-weight:400}
+.wert{font:750 40px/1.1 -apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;letter-spacing:-.025em;font-variant-numeric:tabular-nums}
+.unter{display:flex;gap:18px;margin-top:6px;font-size:15px;font-variant-numeric:tabular-nums} .unter span{color:var(--leise)} .unter b{font-weight:600}
+.pos,.pos b{color:var(--gruen)} .neg,.neg b{color:var(--rot)} .leise{color:var(--leise)} .leer{color:var(--leise);padding:8px 0}
+svg{width:100%;height:auto;display:block;margin-top:14px}
+.raster{stroke:var(--linie);stroke-width:1} .achse{fill:var(--leise);font-size:11px} .startlinie{stroke:var(--leise);stroke-width:1;stroke-dasharray:3 4}
+.konto .flaeche{fill:var(--akzent-soft)} .konto .linie{fill:none;stroke:var(--akzent);stroke-width:2.2;stroke-linejoin:round} .konto .punkt{fill:var(--akzent)}
+.zeile,summary{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 0;border-top:1px solid var(--linie)}
+.karte h2+.zeile,.karte h2+.zeile-auf summary,.karte h2+.hinweis+.zeile-auf summary{border-top:0}
+.zeile span,summary span{display:flex;flex-direction:column;min-width:0} .rechts{text-align:right;align-items:flex-end;font-variant-numeric:tabular-nums}
+small{color:var(--leise);font-size:13px;margin-top:2px} .rechts small{color:inherit;opacity:.8}
+summary{cursor:pointer;list-style:none} summary::-webkit-details-marker{display:none}
+summary b::after{content:" ›";color:var(--leise);font-weight:400;display:inline-block;transition:transform .2s}
+details[open] summary b::after{transform:rotate(90deg)}
+.detail{padding:0 0 14px} .fakten{display:flex;flex-wrap:wrap;gap:4px 16px;color:var(--leise);font-size:14px} .fakten b{color:var(--text);font-variant-numeric:tabular-nums}
 .docht{stroke-width:1} .docht.auf{stroke:var(--gruen)} .docht.ab{stroke:var(--rot)} .kerze.auf{fill:var(--gruen)} .kerze.ab{fill:var(--rot)}
 .sma200{fill:none;stroke:var(--akzent);stroke-width:2} .sma5{fill:none;stroke:var(--orange);stroke-width:1.2} .hoch50{fill:none;stroke:var(--leise);stroke-width:1;stroke-dasharray:4 3}
 .stop{stroke:var(--rot);stroke-width:1.4;stroke-dasharray:6 4} .stoptext{fill:var(--rot);font-size:11px;font-weight:700} .kauf{fill:var(--gruen)}
-.legende{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;color:var(--leise);margin-top:8px}
-.legende span::before{content:"";display:inline-block;width:12px;height:3px;border-radius:2px;margin-right:5px;vertical-align:middle;background:var(--c)}
-.spark .flaeche{fill:var(--akzent-soft)} .spark .linie{fill:none;stroke:var(--akzent);stroke-width:2;vector-effect:non-scaling-stroke} .spark .punkt{fill:var(--akzent)}
-.zeilen{display:flex;flex-direction:column;gap:8px} .zeile{display:flex;justify-content:space-between;gap:12px;background:var(--fuell);border-radius:14px;padding:12px 14px}
-.zeile b{text-align:right;font-variant-numeric:tabular-nums}
-.liste{list-style:none;margin:0;padding:0} .liste li{padding:10px 0;border-top:1px solid var(--linie)} .liste li:first-child{border-top:0}
-.warn{margin:12px 0 0;padding-left:18px;color:var(--gelb)}
-.protokoll{list-style:none;margin:0;padding:0} .protokoll li{display:grid;grid-template-columns:86px 10px minmax(0,1fr);gap:10px;padding:9px 0;border-top:1px solid var(--linie);font-size:14px}
-.protokoll li:first-child{border-top:0} .zeit{color:var(--leise);font-variant-numeric:tabular-nums;font-size:13px}
-.protokoll i{width:9px;height:9px;border-radius:50%;margin-top:6px;background:var(--leise)}
-.punkt-gruen{background:var(--gruen)!important} .punkt-rot{background:var(--rot)!important} .punkt-gelb{background:var(--gelb)!important} .punkt-blau{background:var(--akzent)!important}
-.tabelle{overflow-x:auto} table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
-th{text-align:left;color:var(--leise);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;font-weight:600;padding:7px 8px;border-bottom:1px solid var(--linie);white-space:nowrap}
-td{padding:9px 8px;border-bottom:1px solid var(--linie);white-space:nowrap} .r{text-align:right}
-.fuss{color:var(--leise);font-size:13px;margin-top:22px;text-align:center}
+.chart .raster{stroke:var(--linie)} .chart .achse{fill:var(--leise)}
+.hinweis{background:var(--akzent-soft);color:var(--akzent);border-radius:12px;padding:10px 12px;font-size:14px;margin:6px 0 4px}
+dialog{border:0;border-radius:22px;padding:22px;width:min(92vw,420px);background:var(--karte);color:var(--text)}
+dialog::backdrop{background:rgba(0,0,0,.35)}
+dialog h3{margin:0 0 12px;font-size:19px} dialog .z{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--linie)}
+dialog .z:first-of-type{border-top:0} dialog p{color:var(--leise);font-size:14px;margin:14px 0 0} dialog ul{color:var(--orange);font-size:14px;padding-left:18px;margin:10px 0 0}
+dialog button{margin-top:16px;width:100%;border:0;border-radius:12px;padding:12px;background:var(--fuell);color:var(--text);font:600 16px -apple-system,sans-serif}
 </style></head><body><div class="wrap">
-<h1>MyTrade</h1>
-<div class="sub">Stop-Lauf vom 14.10.2026, 18:50 Uhr · Paper-Konto · nur Ansicht</div>
+<header><div><h1>MyTrade</h1><div class="stand">Stand 14.10., 18:55 Uhr · Spielgeld</div></div>
+<button class="info" onclick="document.getElementById('info').showModal()" aria-label="Bot-Status">i</button></header>
 
-<section class="karte kpis" aria-label="Kennzahlen">
-  <div class="kpi"><div class="k">Kontowert</div><div class="v">500,00 $</div><div class="leer">Der Kontoverlauf erscheint nach ein paar Handelstagen.</div></div>
-  <div class="kpi"><div class="k">Heute</div><div class="v ">0,00 $</div><div class="s">0,00 %</div></div>
-  <div class="kpi"><div class="k">Seit Start</div><div class="v ">0,00 $</div><div class="s">0,00 % · Start 500 $</div></div>
-  <div class="kpi"><div class="k">Positionen</div><div class="v">0 / 8</div><div class="s">Bargeld 500,00 $</div></div>
+<section class="karte">
+  <div class="leise" style="font-size:14px">Kontowert</div>
+  <div class="wert">500,00 $</div>
+  <div class="unter"><span>Heute <b class="">0,00 $</b></span><span>Seit Start <b class="">0,00 %</b></span></div>
+  <svg viewBox="0 0 640 200" class="konto" role="img" aria-label="Kontoverlauf"><line x1="2" x2="582" y1="10.0" y2="10.0" class="raster"/><text x="588" y="14.0" class="achse">505</text><line x1="2" x2="582" y1="92.0" y2="92.0" class="raster"/><text x="588" y="96.0" class="achse">500</text><line x1="2" x2="582" y1="174.0" y2="174.0" class="raster"/><text x="588" y="178.0" class="achse">495</text><line x1="2" x2="582" y1="92.0" y2="92.0" class="startlinie"/><path d="M2.0 92.0 L54.5 92.0 L107.1 92.0 L159.6 92.0 L212.2 92.0 L264.7 92.0 L317.3 92.0 L369.8 92.0 L422.4 92.0 L474.9 92.0 L527.5 92.0 L580.0 92.0 L580.0 178 L2 178Z" class="flaeche"/><path d="M2.0 92.0 L54.5 92.0 L107.1 92.0 L159.6 92.0 L212.2 92.0 L264.7 92.0 L317.3 92.0 L369.8 92.0 L422.4 92.0 L474.9 92.0 L527.5 92.0 L580.0 92.0" class="linie"/><circle cx="580.0" cy="92.0" r="4.5" class="punkt"/><text x="2" y="196" class="achse">29.09.26</text><text x="582" y="196" class="achse" text-anchor="end">14.10.26</text></svg>
 </section>
 
-<div class="raster2">
-<div>
-  <section class="karte"><h2>Offene Positionen</h2><div class="leer">Keine offenen Positionen. Der Bot kauft, sobald ein Signal kommt.</div>
-    <div class="legende"><span style="--c:var(--akzent)">SMA 200</span><span style="--c:var(--orange)">SMA 5</span><span style="--c:var(--leise)">50-Tage-Hoch</span><span style="--c:var(--rot)">Stop</span></div></section>
-  <section class="karte"><h2>Signale </h2><div class="leer">Keine Kauf- oder Verkaufssignale beim letzten Lauf.</div></section>
-  <section class="karte"><h2>Nah am Signal</h2><div class="tabelle"><table><thead><tr><th>Aktie</th><th>Trend</th><th class="r">RSI(2)</th><th class="r">zum 50T-Hoch</th><th class="r">Volumen</th><th>Was fehlt</th></tr></thead><tbody><tr><td><b>MA</b></td><td>✓ +13,9 %</td><td class="r">99,8</td><td class="r">auf dem Hoch</td><td class="r">1,3×</td><td>Breakout: Volumen fehlt</td></tr><tr><td><b>JNJ</b></td><td>✓ +2,9 %</td><td class="r">14,7</td><td class="r">10,7 %</td><td class="r">2,4×</td><td>Pullback: RSI fast unter 10</td></tr><tr><td><b>QQQ</b></td><td>✓ +10,6 %</td><td class="r">15,7</td><td class="r">2,1 %</td><td class="r">0,8×</td><td>Pullback: RSI fast unter 10</td></tr><tr><td><b>V</b></td><td>✓ +17,3 %</td><td class="r">99,9</td><td class="r">auf dem Hoch</td><td class="r">1,2×</td><td>Breakout: Volumen fehlt</td></tr><tr><td><b>MSFT</b></td><td>✓ +25,4 %</td><td class="r">90,7</td><td class="r">auf dem Hoch</td><td class="r">1,1×</td><td>Breakout: Volumen fehlt</td></tr><tr><td><b>AAPL</b></td><td>✓ +17,2 %</td><td class="r">76,5</td><td class="r">auf dem Hoch</td><td class="r">1,1×</td><td>Breakout: Volumen fehlt</td></tr><tr><td><b>MRK</b></td><td>✓ +15,5 %</td><td class="r">20,3</td><td class="r">8,7 %</td><td class="r">0,8×</td><td>Pullback: RSI fast unter 10</td></tr><tr><td><b>XOM</b></td><td>✓ +16,4 %</td><td class="r">99,3</td><td class="r">auf dem Hoch</td><td class="r">0,9×</td><td>Breakout: Volumen fehlt</td></tr><tr><td><b>ACN</b></td><td>✓ +12,5 %</td><td class="r">96,0</td><td class="r">auf dem Hoch</td><td class="r">0,8×</td><td>Breakout: Volumen fehlt</td></tr><tr><td><b>NOW</b></td><td>✓ +20,3 %</td><td class="r">23,5</td><td class="r">6,3 %</td><td class="r">1,3×</td><td>Pullback: RSI fast unter 10</td></tr><tr><td><b>PG</b></td><td>✓ +4,5 %</td><td class="r">88,4</td><td class="r">0,1 %</td><td class="r">0,8×</td><td>Breakout: knapp unter Hoch</td></tr><tr><td><b>LIN</b></td><td>✓ +1,3 %</td><td class="r">91,6</td><td class="r">auf dem Hoch</td><td class="r">0,6×</td><td>Breakout: Volumen fehlt</td></tr></tbody></table></div></section>
-  <section class="karte"><h2>Trades <span class="leise" style="font-size:14px;font-weight:400">0 abgeschlossen · – · <span class="">0,00 $</span></span></h2><div class="leer">Noch keine Trades.</div></section>
-</div>
-<div>
-  <section class="karte"><h2>Bot <span class="pill gruen">Aktiv</span></h2>
-    <div class="zeilen">
-      <div class="zeile"><span>Markt-Filter</span><b class="neg">–</b></div>
-      <div class="zeile"><span>Notbremse</span><b>Aus</b></div>
-      <div class="zeile"><span>Abstand vom Höchststand</span><b>0,0 %</b></div>
-      <div class="zeile"><span>Offene Orders</span><b>0</b></div>
-    </div></section>
-  <section class="karte"><h2>Protokoll</h2><ul class="protokoll"><li><span class="zeit">14.10. 18:50</span><i class="punkt-blau"></i><span>Stop-Lauf: 0 Stops gesetzt.</span></li><li><span class="zeit">14.10. 16:07</span><i class="punkt-gelb"></i><span>Markt ist offen – der Abendlauf startet erst nach Börsenschluss.</span></li><li><span class="zeit">14.10. 16:04</span><i class="punkt-blau"></i><span>Stop-Lauf: 0 Stops gesetzt.</span></li><li><span class="zeit">14.10. 15:53</span><i class="punkt-gelb"></i><span>Markt ist offen – der Abendlauf startet erst nach Börsenschluss.</span></li><li><span class="zeit">14.10. 15:53</span><i class="punkt-blau"></i><span>Stop-Lauf: 0 Stops gesetzt.</span></li></ul></section>
-  <section class="karte"><h2>Analyse</h2>
-    <div class="zeilen">
-      <div class="zeile"><span>Backtest: Rendite pro Jahr</span><b>10,0 % <span class="leise">(SPY 13,8 %)</span></b></div>
-      <div class="zeile"><span>Backtest: größter Rückgang</span><b>17,4 % <span class="leise">(SPY 33,7 %)</span></b></div>
-      <div class="zeile"><span>Paper-Trades bisher</span><b>0</b></div>
-    </div>
-    <p class="leise" style="margin:12px 0 0">Letzte Analyse (14.10.26): Regeln beibehalten.</p></section>
-</div>
-</div>
-<div class="fuss">Erzeugt am 14.10.2026, 18:50 Uhr nach dem letzten Bot-Lauf. Nur Spielgeld (Paper-Trading), keine Anlageberatung.</div>
+<section class="karte"><h2>Offene Positionen <span class="leise">0 / 8</span></h2><div class="leer">Keine offenen Positionen.</div></section>
+
+<section class="karte"><h2>Abgeschlossene Trades </h2><div class="leer">Noch keine abgeschlossenen Trades.</div></section>
+
+<dialog id="info"><h3>Bot</h3>
+  <div class="z"><span>Status</span><b>Aktiv</b></div>
+  <div class="z"><span>Markt-Filter</span><b class="pos">Kaufen erlaubt</b></div>
+  <div class="z"><span>Letzter Lauf</span><b>Stop-Lauf, 14.10. 18:55</b></div>
+  <div class="z"><span>Bargeld</span><b>500,00 $</b></div>
+  
+  <p>Steuern (Pause, Not-Aus) geht in MyTrade in der Claude-App. Not-Aus unterwegs: GitHub-App → Actions → Trading-Bot → Run workflow → notaus.</p>
+  <button onclick="this.closest('dialog').close()">Schließen</button>
+</dialog>
 </div></body></html>
